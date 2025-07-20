@@ -42,7 +42,7 @@ function BioGenerator() {
       const data = await response.json();
       const bioArray = data.bio
         .substring(data.bio.indexOf("1") + 4)
-        .split(/\n?\d+\.\s+/) // Split on "1. ", "2. ", etc.
+        .split(/\n?\d+\.\s+/) 
         .filter((b) => b.trim() !== "");
       setGeneratedBio(bioArray);
     } catch (e) {
