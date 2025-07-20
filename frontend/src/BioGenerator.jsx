@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Loder from "./components/Loder";
 import Cards from "./components/Cards";
+
 function BioGenerator() {
   const options = [
     { label: "one", value: "Professional" },
@@ -25,16 +26,19 @@ function BioGenerator() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_prompt: bio,
-          vibe: vibe,
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/generate`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_prompt: bio,
+            vibe: vibe,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -45,8 +49,8 @@ function BioGenerator() {
         .split(/\n?\d+\.\s+/) 
         .filter((b) => b.trim() !== "");
       setGeneratedBio(bioArray);
-    } catch (e) {
-      setError(e.message);
+    } catch {
+      setError("Failed to generate bio. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -147,7 +151,7 @@ function BioGenerator() {
                 <span class="truncate">Generate Bio</span>
               </button>
             </div>
-            {error && <p className="text-red-500 text-center mt-4">Please Try Again</p>}
+            {error && <p className="text-red-500 text-center mt-4">{error}</p>}
             {loading && (
               <div className="flex justify-center items-center mt-4">
                 <Loder />
