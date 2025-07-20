@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Loder from "./components/Loder";
 import Cards from "./components/Cards";
+import Github from "./components/GithubButtons";
 
 function BioGenerator() {
   const options = [
@@ -92,15 +93,15 @@ function BioGenerator() {
           <div class="flex flex-1 justify-end gap-8">
             <div class="flex items-center gap-9">
               <a
-                class="text-[#1c180d] text-sm font-medium leading-normal"
-                href="#"
+                className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#fac638] text-[#1c180d] text-sm font-bold leading-normal tracking-[0.015em]"
+                href="https://github.com/fms12/twitter-bio-generator"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Support
+                <Github />
+                <p>Star on GitHub</p>
               </a>
             </div>
-            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#fac638] text-[#1c180d] text-sm font-bold leading-normal tracking-[0.015em]">
-              <span class="truncate">Get Started</span>
-            </button>
           </div>
         </header>
         <div class="px-40 flex flex-1 justify-center py-5">
@@ -114,12 +115,12 @@ function BioGenerator() {
             </p>
             <div class="w-full flex justify-center px-4 py-3">
               <label class="flex flex-col w-full max-w-[480px]">
-                <p class="text-[#1c180d] text-base font-medium leading-normal pb-2 text-center">
-                  Drop in your job
+                <p class="text-[#1c180d] text-base font-medium leading-normal pb-2">
+                  1. Drop in your job
                   <span class="text-slate-500"> (or your favorite hobby).</span>
                 </p>
                 <textarea
-                  placeholder="Enter keywords or phrases about yourself"
+                  placeholder="e.g. 'Software Engineer, AI Enthusiast'"
                   class="form-input w-full resize-none overflow-hidden rounded-xl text-[#1c180d] focus:outline-0 focus:ring-0 border border-[#e9e2ce] bg-[#fcfbf8] focus:border-[#e9e2ce] min-h-36 placeholder:text-[#9e8747] p-[15px] text-base font-normal leading-normal"
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>
@@ -127,8 +128,8 @@ function BioGenerator() {
             </div>
             <div class="w-full flex justify-center px-4 py-3">
               <label class="flex flex-col w-full max-w-[480px]">
-                <p class="text-[#1c180d] text-base font-medium leading-normal pb-2 text-center">
-                  Select your vibe.
+                <p class="text-[#1c180d] text-base font-medium leading-normal pb-2">
+                  2. Select your vibe.
                 </p>
                 <select
                   onChange={(e) => setVibe(e.target.value)}
